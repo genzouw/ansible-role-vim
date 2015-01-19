@@ -1,0 +1,29 @@
+- shell: 
+    hg clone https://vim.googlecode.com/hg/ vim7.4;
+    ./configure \
+      --with-local-dir=/usr \
+      --enable-fontset \
+      --enable-multibyte \
+      --enable-tclinterp \
+      --disable-darwin \
+      --disable-gpm \
+      --disable-gtktest \
+      --disable-gui \
+      --disable-netbeans \
+      --disable-selinux \
+      --disable-xsmp \
+      --with-x=no \
+      --without-gnome \
+    ;
+    make;
+    make install;
+  args:
+    chdir: /usr/local/src
+    creates: /usr/local/bin/vim
+
+- file:
+    src: /usr/local/bin/vim
+    dest: /usr/local/bin/vi
+    state: link
+    mode: 0755
+
