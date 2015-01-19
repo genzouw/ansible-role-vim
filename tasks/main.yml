@@ -1,0 +1,29 @@
+- yum: pkg={{ item }} state=present
+  with_items:
+    - gcc
+    - make
+    - mercurial
+    - ncurses-devel
+    - perl-ExtUtils-Embed
+    - perl-devel
+    - python-devel
+    - rpm-build
+
+- command: hg clone https://vim.googlecode.com/hg/ vim7.4
+  args:
+    chdir: /usr/local/src
+    creates: /usr/local/src/vim7.4
+- command: ./configure --with-local-dir=/usr --enable-multibyte --enable-tclinterp --disable-darwin --disable-xsmp --disable-netbeans --disable-gtktest --disable-gpm --disable-selinux --without-gnome
+  args:
+    chdir: /usr/local/src/vim7.4
+- command: make
+  args:
+    chdir: /usr/local/src/vim7.4
+- command: make install
+  args:
+    chdir: /usr/local/src/vim7.4
+- file:
+    src: /usr/local/bin/vim
+    dest: /usr/local/bin/vi
+    state: link
+
