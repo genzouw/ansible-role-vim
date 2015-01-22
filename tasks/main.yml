@@ -1,4 +1,4 @@
-- yum: pkg={{ item }} state=present
+- yum: name={{ item }} state=present
   with_items:
     - gcc
     - make
@@ -13,15 +13,17 @@
   args:
     chdir: /usr/local/src
     creates: /usr/local/src/vim7.4
-- command: ./configure --with-local-dir=/usr --enable-multibyte --enable-tclinterp --disable-darwin --disable-xsmp --disable-netbeans --disable-gtktest --disable-gpm --disable-selinux --without-gnome
+
+- command: "{{ item }}"
   args:
     chdir: /usr/local/src/vim7.4
-- command: make
-  args:
-    chdir: /usr/local/src/vim7.4
-- command: make install
-  args:
-    chdir: /usr/local/src/vim7.4
+    creates: /usr/local/bin/vim
+    removes: /usr/local/src/vim7.4
+  with_items:
+    - "./configure --with-local-dir=/usr --enable-multibyte --enable-tclinterp --disable-darwin --disable-xsmp --disable-netbeans --disable-gtktest --disable-gpm --disable-selinux --without-gnome"
+    - "make"
+    - "make install"
+
 - file:
     src: /usr/local/bin/vim
     dest: /usr/local/bin/vi
