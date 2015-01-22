@@ -1,0 +1,2 @@
+---
+vim7.4_configure_options: '--with-local-dir=/usr --enable-multibyte --enable-tclinterp --disable-darwin --disable-xsmp --disable-netbeans --disable-gtktest --disable-gpm --disable-selinux --without-gnome'
