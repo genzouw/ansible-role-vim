@@ -18,7 +18,6 @@
   args:
     chdir: "{{ vim74_srcdir }}/vim7.4"
     creates: "{{ vim74_bindir }}/vim"
-    removes: "{{ vim74_srcdir }}/vim7.4"
   with_items:
     - "./configure {{ vim74_configure_options }}"
     - "make"
