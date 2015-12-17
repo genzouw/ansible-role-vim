@@ -1,11 +1,12 @@
 - yum: name={{ item }} state=present
   with_items:
     - gcc
+    - lua-devel
     - make
     - mercurial
     - ncurses-devel
-    - perl-ExtUtils-Embed
     - perl-devel
+    - perl-ExtUtils-Embed
     - python-devel
     - rpm-build
 
