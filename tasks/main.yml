@@ -10,10 +10,9 @@
     - python-devel
     - rpm-build
 
-- command: hg clone https://vim.googlecode.com/hg/ vim7.4
-  args:
-    chdir: "{{ vim74_srcdir }}"
-    creates: "{{ vim74_srcdir }}/vim7.4"
+- git:
+    repo: https://github.com/vim/vim.git
+    dest: "{{ vim74_srcdir }}/vim7.4"
 
 - command: "{{ item }}"
   args:
