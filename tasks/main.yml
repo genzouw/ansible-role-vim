@@ -13,19 +13,19 @@
 
 - git:
     repo: https://github.com/vim/vim.git
-    dest: "{{ vim74_srcdir }}/vim7.4"
+    dest: "{{ vim_srcdir }}/vim"
 
 - command: "{{ item }}"
   args:
-    chdir: "{{ vim74_srcdir }}/vim7.4"
-    creates: "{{ vim74_bindir }}/vim"
+    chdir: "{{ vim_srcdir }}/vim"
+    creates: "{{ vim_bindir }}/vim"
   with_items:
-    - "./configure {{ vim74_configure_options }}"
+    - "./configure {{ vim_configure_options }}"
     - "make"
     - "make install"
 
 - file:
-    src: "{{ vim74_bindir }}/vim"
-    dest: "{{ vim74_bindir }}/vi"
+    src: "{{ vim_bindir }}/vim"
+    dest: "{{ vim_bindir }}/vi"
     state: link
 
