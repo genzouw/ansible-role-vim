@@ -21,7 +21,7 @@
     creates: "{{ vim_bindir }}/vim"
   with_items:
     - "./configure {{ vim_configure_options }}"
-    - "make"
+    - "make -j2"
     - "make install"
 
 - file:
