@@ -1,4 +1,4 @@
 ---
-vim_configure_options: '--with-local-dir=/usr --enable-multibyte --enable-tclinterp --disable-xsmp --disable-netbeans --disable-gtktest --disable-gpm --disable-selinux --without-gnome --enable-luainterp=yes --enable-signs -enable-python3interp=yes '
+vim_configure_options: '--with-local-dir=/usr --enable-multibyte --enable-tclinterp --disable-xsmp --disable-netbeans --disable-gtktest --disable-gpm --disable-selinux --without-gnome --enable-luainterp=yes --enable-signs --enable-python3interp=dynamic '
 vim_srcdir: '/usr/local/src'
 vim_bindir: '/usr/local/bin'
